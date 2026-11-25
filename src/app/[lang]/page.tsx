@@ -143,7 +143,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
           </div>
         </section>
 
-        <SlidingImages />
+        <SlidingImages lang={lang} projects={t.projects} />
       </main>
       <Contact t={t} />
     </>

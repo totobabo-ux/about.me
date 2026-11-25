@@ -21,7 +21,7 @@ npm run build    # 배포 전 빌드 확인
 | Findex 화면 | `public/images/projects/findex.jpg`, `findex-2.jpg` | 16:10 캡처 |
 | MoNew 화면 | `public/images/projects/monew.jpg` | 16:10 캡처 |
 | Otboo 화면 | `public/images/projects/otboo.jpg` | 16:10 캡처 |
-| 기타 (흐르는 이미지 띠) | `ipp-bus.jpg`, `codeit.jpg`, `code.jpg`, `server.jpg` | 4:3 |
+| 상세 페이지 추가 이미지 | `findex-2.jpg`, `code.jpg`(MoNew), `server.jpg`(Otboo) | 16:9 |
 
 같은 파일명으로 덮어쓰면 코드 수정 없이 교체됩니다. 프로젝트별 GitHub 저장소 주소는 `content.ts`의 각 프로젝트 `github` 값을 바꾸면 됩니다.
 
