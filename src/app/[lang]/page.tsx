@@ -10,7 +10,7 @@ import { WorkList } from "@/components/WorkList";
 import { getContent, hasLocale, PROFILE } from "@/data/content";
 
 function Label({ children }: { children: string }) {
-  return <p className="mb-10 text-xs label-track text-muted uppercase md:mb-14">{children}</p>;
+  return <p className="mb-8 text-xs label-track text-muted uppercase md:mb-14">{children}</p>;
 }
 
 export default async function Home({ params }: PageProps<"/[lang]">) {
@@ -26,7 +26,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         <Hero t={t} />
 
         {/* 소개 */}
-        <section id="about" className="mx-auto max-w-[1400px] px-6 pt-28 pb-20 md:px-16 md:pt-40 md:pb-56">
+        <section id="about" className="mx-auto max-w-[1400px] px-6 pt-20 pb-12 md:px-16 md:pt-40 md:pb-56">
           <div className="grid gap-10 md:grid-cols-[1fr_280px] md:gap-20">
             <WordReveal text={t.intro.headline} className="text-2xl leading-[1.45] md:text-[2.6vw] md:leading-[1.35]" />
             <div className="relative">
@@ -43,9 +43,9 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         </section>
 
         {/* 일하는 방식 */}
-        <section id="approach" className="mx-auto max-w-[1400px] px-6 py-24 md:px-16 md:py-32">
+        <section id="approach" className="mx-auto max-w-[1400px] px-6 py-16 md:px-16 md:py-32">
           <Label>{t.approach.label}</Label>
-          <div className="grid gap-14 md:grid-cols-3 md:gap-10">
+          <div className="grid gap-12 md:grid-cols-3 md:gap-10">
             {t.approach.items.map((item, i) => (
               <Reveal key={item.title} delay={i * 0.1}>
                 <p className="mb-8 border-b border-line pb-6 font-mono text-sm text-muted">0{i + 1}</p>
@@ -57,7 +57,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         </section>
 
         {/* 프로젝트 */}
-        <section id="work" className="mx-auto max-w-[1400px] px-6 py-24 md:px-16 md:py-32">
+        <section id="work" className="mx-auto max-w-[1400px] px-6 py-16 md:px-16 md:py-32">
           <Label>{t.work.label}</Label>
           <WorkList lang={lang} t={t} />
           <div className="mt-16 flex justify-center">
@@ -68,7 +68,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         </section>
 
         {/* 경험 */}
-        <section className="mx-auto max-w-[1400px] px-6 py-24 md:px-16 md:py-32">
+        <section className="mx-auto max-w-[1400px] px-6 py-16 md:px-16 md:py-32">
           <Label>{t.experience.label}</Label>
           <ul className="border-b border-line">
             {t.experience.items.map((item) => (
@@ -95,7 +95,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         </section>
 
         {/* 기술 스택 + 학력 */}
-        <section className="mx-auto grid max-w-[1400px] gap-24 px-6 py-24 md:grid-cols-[1.4fr_1fr] md:px-16 md:py-32">
+        <section className="mx-auto grid max-w-[1400px] gap-16 px-6 py-16 md:gap-24 md:grid-cols-[1.4fr_1fr] md:px-16 md:py-32">
           <div>
             <Label>{t.skills.label}</Label>
             <div className="flex flex-col">
@@ -133,7 +133,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
 
         {/* 지원 동기 / 목표 */}
         <section className="bg-paper-soft">
-          <div className="mx-auto max-w-[1400px] px-6 py-24 md:px-16 md:py-36">
+          <div className="mx-auto max-w-[1400px] px-6 py-20 md:px-16 md:py-36">
             <Label>{t.goal.label}</Label>
             <div className="grid gap-8 md:grid-cols-2 md:gap-16">
               {t.goal.body.map((p, i) => (

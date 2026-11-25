@@ -33,6 +33,7 @@ html.lenis body {
 
 html {
   -webkit-text-size-adjust: 100%;
+  overflow-x: clip;
 }
 
 html[data-pl] [data-preloader] {
@@ -44,7 +45,8 @@ body {
   color: var(--ink);
   font-family: var(--font-sans);
   word-break: keep-all;
-  overflow-x: hidden;
+  overflow-x: clip;
+  -webkit-tap-highlight-color: transparent;
 }
 
 ::selection {

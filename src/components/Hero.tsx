@@ -54,7 +54,7 @@ export function Hero({ t }: { t: Content }) {
           fill
           priority
           sizes="(max-width: 820px) 100vw, 820px"
-          className="object-cover object-top [mask-image:linear-gradient(to_right,transparent,black_18%,black_82%,transparent)]"
+          className="object-cover object-top md:[mask-image:linear-gradient(to_right,transparent,black_18%,black_82%,transparent)]"
         />
       </motion.div>
 
@@ -94,6 +94,10 @@ export function Hero({ t }: { t: Content }) {
             {t.hero.role[0]}
             <br />
             <span className="opacity-70">{t.hero.role[1]}</span>
+          </p>
+          {/* 모바일에서는 위치 배지 대신 한 줄로 표시 */}
+          <p className="mt-4 text-sm opacity-70 md:hidden">
+            {t.hero.location.join(" ")}
           </p>
         </motion.div>
       </motion.div>

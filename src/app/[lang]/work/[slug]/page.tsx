@@ -49,14 +49,14 @@ export default async function WorkDetail({ params }: PageProps<"/[lang]/work/[sl
       <FloatingMenu lang={lang} t={t} base={base} />
       <main>
         {/* 타이틀 */}
-        <section className="mx-auto max-w-[1400px] px-6 pt-44 md:px-16 md:pt-56">
+        <section className="mx-auto max-w-[1400px] px-6 pt-32 md:px-16 md:pt-56">
           <Reveal>
             <p className="mb-6 text-xs label-track text-muted uppercase">{project.kind}</p>
             <h1 className="text-[18vw] leading-[0.9] font-normal tracking-tight md:text-[9vw]">{project.name}</h1>
           </Reveal>
-          <div className="mt-16 grid gap-8 border-t border-line pt-8 md:mt-24 md:grid-cols-4">
+          <div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-8 border-t border-line pt-8 md:mt-24 md:grid-cols-4">
             {info.map((item, i) => (
-              <Reveal key={item.label} delay={i * 0.08}>
+              <Reveal key={item.label} delay={i * 0.08} className={i < 2 ? "col-span-2 md:col-span-1" : undefined}>
                 <p className="mb-3 text-xs label-track text-muted uppercase">{item.label}</p>
                 <p className="text-[15px] leading-relaxed">{item.value}</p>
               </Reveal>
@@ -76,7 +76,7 @@ export default async function WorkDetail({ params }: PageProps<"/[lang]/work/[sl
         </section>
 
         {/* 담당 기능 + 기술 스택 */}
-        <section className="mx-auto grid max-w-[1400px] gap-16 px-6 py-24 md:grid-cols-2 md:px-16 md:py-32">
+        <section className="mx-auto grid max-w-[1400px] gap-16 px-6 py-16 md:grid-cols-2 md:px-16 md:py-32">
           <div>
             <p className="mb-8 text-xs label-track text-muted uppercase">{t.detail.features}</p>
             <ul className="border-b border-line">
@@ -106,9 +106,9 @@ export default async function WorkDetail({ params }: PageProps<"/[lang]/work/[sl
 
         {/* 문제 해결 */}
         <section className="bg-paper-soft">
-          <div className="mx-auto max-w-[1400px] px-6 py-24 md:px-16 md:py-36">
-            <p className="mb-14 text-xs label-track text-muted uppercase">{t.detail.troubleshooting}</p>
-            <div className="flex flex-col gap-24 md:gap-32">
+          <div className="mx-auto max-w-[1400px] px-6 py-20 md:px-16 md:py-36">
+            <p className="mb-10 text-xs label-track text-muted uppercase">{t.detail.troubleshooting}</p>
+            <div className="flex flex-col gap-16 md:gap-32">
               {project.issues.map((issue, i) => (
                 <article key={issue.title} className="grid gap-10 md:grid-cols-[1fr_1.3fr] md:gap-16">
                   <div>
@@ -165,7 +165,7 @@ export default async function WorkDetail({ params }: PageProps<"/[lang]/work/[sl
         )}
 
         {/* 저장소 + 다음 프로젝트 */}
-        <section className="mx-auto max-w-[1400px] px-6 py-24 md:px-16 md:py-36">
+        <section className="mx-auto max-w-[1400px] px-6 py-20 md:px-16 md:py-36">
           <div className="mb-24 flex justify-center">
             <RoundButton href={project.github} external className="border border-line px-10 py-6 text-[15px] hover:text-white">
               <span className="relative">{t.detail.repo} ↗</span>

@@ -16,12 +16,12 @@ export function SlidingImages() {
   const curve = useTransform(scrollYProgress, [0, 0.9], [60, 0]);
 
   return (
-    <div ref={ref} className="relative z-10 flex flex-col gap-[3vw] bg-paper pt-24 md:pt-40">
+    <div ref={ref} className="relative z-10 flex flex-col gap-3 overflow-x-clip bg-paper pt-16 md:gap-[3vw] md:pt-40">
       {[
         { images: SLIDER_ROWS.top, x: x1 },
         { images: SLIDER_ROWS.bottom, x: x2 },
       ].map((row, r) => (
-        <motion.div key={r} style={{ x: row.x }} className="relative -left-[6vw] flex w-[112vw] gap-[3vw]">
+        <motion.div key={r} style={{ x: row.x }} className="relative -left-[30vw] flex w-[190vw] gap-3 md:-left-[6vw] md:w-[112vw] md:gap-[3vw]">
           {row.images.map((src, i) => (
             <div
               key={src + i}
@@ -29,14 +29,14 @@ export function SlidingImages() {
               style={{ background: colors[(i + r * 2) % colors.length] }}
             >
               <div className="relative h-[80%] w-[80%] overflow-hidden">
-                <Image src={src} alt="" fill sizes="25vw" className="object-cover" />
+                <Image src={src} alt="" fill sizes="(max-width: 768px) 48vw, 25vw" className="object-cover" />
               </div>
             </div>
           ))}
         </motion.div>
       ))}
-      <motion.div style={{ height: curve }} className="relative mt-[6vw]">
-        <div className="absolute -left-[10%] h-[1550%] w-[120%] rounded-[0_0_50%_50%] bg-paper shadow-[0_60px_50px_rgba(0,0,0,0.35)]" />
+      <motion.div style={{ height: curve }} className="relative mt-12 md:mt-[6vw]">
+        <div className="absolute -left-[10%] h-[700%] md:h-[1550%] w-[120%] rounded-[0_0_50%_50%] bg-paper shadow-[0_60px_50px_rgba(0,0,0,0.35)]" />
       </motion.div>
     </div>
   );

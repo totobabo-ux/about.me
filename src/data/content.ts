@@ -124,7 +124,7 @@ const ko: Content = {
   nav: { work: "프로젝트", about: "소개", contact: "연락하기", menu: "메뉴", close: "닫기", home: "홈" },
   preloader: ["안녕하세요", "Hello", "こんにちは", "Hola", "Bonjour", "Ciao", "Hallo", "Olá"],
   hero: {
-    location: ["대한민국 대전", "Based in Korea"],
+    location: ["Located in", "대한민국 대전"],
     role: ["백엔드 개발자", "Java & Spring Boot"],
     marquee: "Hyeonseo Jang — Backend Developer —",
   },
