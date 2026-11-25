@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>장현서 | 백엔드 개발자</title>
+    <meta
+      name="description"
+      content="요청이 들어와 응답이 나가기까지의 전체 흐름을 먼저 확인하는 백엔드 개발자 장현서의 포트폴리오입니다."
+    />
+    <meta property="og:title" content="장현서 | 백엔드 개발자" />
+    <meta property="og:description" content="Java · Spring Boot 백엔드 개발자 장현서의 포트폴리오" />
+    <meta property="og:image" content="images/profile-full.jpg" />
+    <link rel="icon" href="favicon.ico" />
+
+    <!-- 이번 세션에서 로딩 화면을 이미 봤다면 화면을 그리기 전에 숨김 -->
+    <script>
+      try {
+        if (sessionStorage.getItem("preloader-seen")) document.documentElement.dataset.pl = "1";
+      } catch (e) {}
+    </script>
+
+    <!-- 글꼴: Pretendard(한글) + Geist(영문·숫자) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&family=Geist+Mono&display=swap" />
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- 로딩 화면 -->
+    <div class="preloader">
+      <p class="preloader__word"></p>
+      <svg class="preloader__curve" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 0 L100 0 Q50 100 0 0" />
+      </svg>
+    </div>
+
+    <!-- 헤더 (common.js 가 그림) -->
+    <div data-header></div>
+
+    <main>
+      <!-- 히어로: 인물 사진 + 위치 배지 + 직무 + 흐르는 이름 -->
+      <section class="hero">
+        <div class="hero__photo">
+          <img id="hero-photo" alt="" fetchpriority="high" />
+        </div>
+        <div class="hero__content">
+          <div class="hero__location">
+            <p><span data-text="hero.location.0"></span><br /><span data-text="hero.location.1"></span></p>
+            <span class="hero__globe">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" />
+                <ellipse cx="12" cy="12" rx="4" ry="9" />
+                <path d="M3 12h18M5 7h14M5 17h14" />
+              </svg>
+            </span>
+          </div>
+          <div class="hero__role">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M5 5l14 14M19 8v11H8" />
+            </svg>
+            <p class="hero__role-title">
+              <span data-text="hero.role.0"></span><br />
+              <span class="hero__role-sub" data-text="hero.role.1"></span>
+            </p>
+            <p class="hero__role-location" id="hero-location-mobile"></p>
+          </div>
+        </div>
+        <div class="hero__marquee">
+          <div class="hero__marquee-track">
+            <span data-text="hero.marquee"></span>
+            <span data-text="hero.marquee" aria-hidden="true"></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 소개 -->
+      <section class="intro" id="about">
+        <div class="container intro__grid">
+          <p class="intro__headline" data-words="intro.headline"></p>
+          <div class="intro__aside">
+            <p class="intro__side reveal" style="--delay: 0.2s" data-text="intro.side"></p>
+            <div class="intro__button">
+              <span class="magnetic">
+                <a class="btn btn--circle btn--dark" href="#approach" data-text="intro.button"></a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 일하는 방식 -->
+      <section class="section" id="approach">
+        <div class="container">
+          <p class="label" data-text="approach.label"></p>
+          <div class="approach" id="approach-list"></div>
+        </div>
+      </section>
+
+      <!-- 프로젝트 목록 -->
+      <section class="section" id="work">
+        <div class="container">
+          <p class="label" data-text="work.label"></p>
+          <div class="work-head">
+            <span data-text="work.colProject"></span>
+            <span data-text="work.colRole"></span>
+          </div>
+          <ul class="work-list" id="work-list"></ul>
+          <div class="work-more">
+            <span class="magnetic">
+              <a class="btn btn--outline" id="work-more" target="_blank" rel="noreferrer" data-text="work.more"></a>
+            </span>
+          </div>
+        </div>
+        <!-- 데스크톱: 커서를 따라다니는 미리보기 -->
+        <div class="work-preview" aria-hidden="true">
+          <div class="work-preview__box"><div class="work-preview__slider" id="work-preview-slider"></div></div>
+        </div>
+        <div class="work-cursor" aria-hidden="true">
+          <div class="work-cursor__dot" data-text="work.view"></div>
+        </div>
+      </section>
+
+      <!-- 경험 -->
+      <section class="section">
+        <div class="container">
+          <p class="label" data-text="experience.label"></p>
+          <ul class="exp-list" id="exp-list"></ul>
+        </div>
+      </section>
+
+      <!-- 기술 스택 + 학력 -->
+      <section class="section">
+        <div class="container skills-edu">
+          <div>
+            <p class="label" data-text="skills.label"></p>
+            <div id="skill-list"></div>
+          </div>
+          <div>
+            <p class="label" data-text="education.label"></p>
+            <div class="edu reveal">
+              <h3 data-text="education.school"></h3>
+              <p data-text="education.major"></p>
+              <p data-text="education.period"></p>
+              <p data-text="education.gpa"></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 목표 -->
+      <section class="section--soft">
+        <div class="container goal">
+          <p class="label" data-text="goal.label"></p>
+          <div class="goal__grid">
+            <p data-words="goal.body.0"></p>
+            <p data-words="goal.body.1"></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 하단 프로젝트 이미지 3장 -->
+      <section class="strip">
+        <div class="strip__scroller">
+          <div class="strip__track" id="strip-track"></div>
+        </div>
+        <div class="strip__curve"><div></div></div>
+      </section>
+    </main>
+
+    <!-- 연락처 (common.js 가 그림) -->
+    <div data-contact></div>
+
+    <!-- 스크립트: 데이터 → 공통 기능 → 이 페이지 기능 순서로 불러옴 -->
+    <script src="js/vendor/lenis.min.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/home.js"></script>
+  </body>
+</html>

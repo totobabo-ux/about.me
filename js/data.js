@@ -1,118 +1,41 @@
 /**
- * 사이트에 표시되는 모든 텍스트와 이미지 경로를 이 파일에서 관리합니다.
- * - 이미지를 교체할 때는 public/images 아래 같은 파일명으로 덮어쓰거나, 아래 IMAGES 경로만 수정하세요.
- * - 문구를 수정할 때는 ko / en 두 곳을 함께 수정하세요.
+ * 사이트에 표시되는 모든 문구와 이미지 경로를 이 파일 하나에서 관리합니다.
+ * - 이미지를 교체할 때는 images/ 폴더에 같은 파일명으로 덮어쓰거나, 아래 IMAGES 경로만 수정하세요.
+ * - 문구를 수정할 때는 ko(한국어) / en(영어) 두 곳을 함께 수정하세요.
+ * - 이 파일은 index.html, work.html 에서 가장 먼저 불러옵니다. (window.SITE 로 접근)
  */
-
-export const locales = ["ko", "en"] as const;
-export type Locale = (typeof locales)[number];
-export const defaultLocale: Locale = "ko";
-
-export const hasLocale = (value: string): value is Locale =>
-  (locales as readonly string[]).includes(value);
-
 /* ------------------------------------------------------------------ */
 /* 이미지 (교체용)                                                       */
 /* ------------------------------------------------------------------ */
-export const IMAGES = {
+const IMAGES = {
   /** 히어로 전신 사진 (세로 사진 권장, 1400px 이상) */
-  profileFull: "/images/profile-full.jpg",
+  profileFull: "images/profile-full.jpg",
   /** 히어로 배경색 — 인물 사진의 배경색과 맞추면 사진 경계가 자연스럽게 이어집니다 */
   heroBackground: "#616161",
   /** 하단 Contact 영역 원형 프로필 (정사각형 권장) */
-  profileAvatar: "/images/profile-avatar.jpg",
-  findex: "/images/projects/findex.jpg",
-  findex2: "/images/projects/findex-2.jpg",
-  monew: "/images/projects/monew.jpg",
-  otboo: "/images/projects/otboo.jpg",
-  code: "/images/projects/code.jpg",
-  server: "/images/projects/server.jpg",
-} as const;
+  profileAvatar: "images/profile-avatar.jpg",
+  findex: "images/projects/findex.jpg",
+  findex2: "images/projects/findex-2.jpg",
+  monew: "images/projects/monew.jpg",
+  otboo: "images/projects/otboo.jpg",
+  code: "images/projects/code.jpg",
+  server: "images/projects/server.jpg",
+};
 
 /* ------------------------------------------------------------------ */
 /* 공통 정보 (전화번호는 공개하지 않음)                                      */
 /* ------------------------------------------------------------------ */
-export const PROFILE = {
+const PROFILE = {
   email: "totobabo01@gmail.com",
   github: "https://github.com/totobabo-ux",
   siteRepo: "https://github.com/totobabo-ux/about.me",
   timeZone: "Asia/Seoul",
-} as const;
-
-/* ------------------------------------------------------------------ */
-/* 타입                                                                */
-/* ------------------------------------------------------------------ */
-export type Issue = {
-  title: string;
-  points: string[];
-  before?: string;
-  after?: string;
-  result?: string;
-};
-
-export type Project = {
-  slug: string;
-  name: string;
-  kind: string;
-  category: string;
-  period: string;
-  team: string;
-  service: string;
-  role: string;
-  stack: string[];
-  features: string[];
-  issues: Issue[];
-  cover: string;
-  gallery: string[];
-  github: string;
-  color: string;
-};
-
-export type Content = {
-  meta: { title: string; description: string };
-  name: string;
-  nav: { work: string; about: string; contact: string; menu: string; close: string; home: string };
-  preloader: string[];
-  hero: { location: string[]; role: string[]; marquee: string };
-  intro: { headline: string; side: string; button: string };
-  approach: { label: string; items: { title: string; body: string }[] };
-  work: { label: string; colProject: string; colRole: string; view: string; more: string };
-  experience: {
-    label: string;
-    items: { title: string; org: string; period: string; points: string[] }[];
-  };
-  skills: { label: string; groups: { name: string; items: string[] }[] };
-  education: { label: string; school: string; major: string; period: string; gpa: string };
-  goal: { label: string; body: string[] };
-  contact: {
-    title: [string, string];
-    button: string;
-    version: string;
-    localTime: string;
-    socials: string;
-  };
-  detail: {
-    service: string;
-    team: string;
-    role: string;
-    period: string;
-    stack: string;
-    features: string;
-    troubleshooting: string;
-    before: string;
-    after: string;
-    result: string;
-    next: string;
-    back: string;
-    repo: string;
-  };
-  projects: Project[];
 };
 
 /* ------------------------------------------------------------------ */
 /* 한국어                                                              */
 /* ------------------------------------------------------------------ */
-const ko: Content = {
+const ko = {
   meta: {
     title: "장현서 | 백엔드 개발자",
     description:
@@ -418,7 +341,7 @@ const ko: Content = {
 /* ------------------------------------------------------------------ */
 /* English                                                             */
 /* ------------------------------------------------------------------ */
-const en: Content = {
+const en = {
   meta: {
     title: "Hyeonseo Jang | Backend Developer",
     description:
@@ -721,12 +644,12 @@ const en: Content = {
   ],
 };
 
-export const content: Record<Locale, Content> = { ko, en };
+/** 하단 이미지 띠에 보여줄 프로젝트 순서 (각 프로젝트의 cover 이미지를 사용) */
+const SLIDER_ORDER = ["findex", "monew", "otboo"];
 
-export const getContent = (locale: Locale) => content[locale];
-
-/**
- * 스크롤에 따라 좌우로 흐르는 이미지 띠 (프로젝트 slug 순서)
- * 각 카드는 프로젝트 대표 이미지(cover)를 보여주고, 누르면 해당 프로젝트 상세 페이지로 이동합니다.
- */
-export const SLIDER_ORDER = ["findex", "monew", "otboo"];
+window.SITE = {
+  IMAGES,
+  PROFILE,
+  SLIDER_ORDER,
+  content: { ko, en },
+};

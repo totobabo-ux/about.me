@@ -1,0 +1,13 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "",
+  "installCommand": "",
+  "cleanUrls": false,
+  "redirects": [
+    { "source": "/ko", "destination": "/", "permanent": true },
+    { "source": "/en", "destination": "/?lang=en", "permanent": true },
+    { "source": "/ko/work/:slug", "destination": "/work.html?p=:slug", "permanent": true },
+    { "source": "/en/work/:slug", "destination": "/work.html?p=:slug&lang=en", "permanent": true }
+  ]
+}
