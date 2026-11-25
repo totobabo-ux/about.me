@@ -729,7 +729,4 @@ export const getContent = (locale: Locale) => content[locale];
  * 스크롤에 따라 좌우로 흐르는 이미지 띠 (프로젝트 slug 순서)
  * 각 카드는 프로젝트 대표 이미지(cover)를 보여주고, 누르면 해당 프로젝트 상세 페이지로 이동합니다.
  */
-export const SLIDER_ROWS = {
-  top: ["findex", "monew", "otboo", "findex"],
-  bottom: ["otboo", "findex", "monew", "otboo"],
-};
+export const SLIDER_ORDER = ["findex", "monew", "otboo"];
